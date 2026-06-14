@@ -388,14 +388,32 @@ async function fetchMetadata() {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
         const data = await response.json();
-        
+
         updatePlayerUI(data);
     } catch (error) {
         console.error("Error fetching nowplaying metadata:", error);
+        updateLiveStatus(false);
+    }
+}
+
+function updateLiveStatus(isOnline) {
+    const statusBadge = document.querySelector('.status-badge');
+    const statusText = document.querySelector('.status-text');
+    if (!statusBadge || !statusText) return;
+
+    if (isOnline) {
+        statusBadge.classList.remove('offline');
+        statusText.textContent = 'Ao Vivo';
+    } else {
+        statusBadge.classList.add('offline');
+        statusText.textContent = 'Offline';
     }
 }
 
 function updatePlayerUI(data) {
+    const isOnline = data && data.is_online === true;
+    updateLiveStatus(isOnline);
+
     const np = data.now_playing;
     if (!np) return;
 

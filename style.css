@@ -1731,6 +1731,22 @@ body {
     flex-shrink: 0;
 }
 
+/* Status Badge Offline State */
+.status-badge.offline {
+    background: rgba(255, 75, 75, 0.08) !important;
+    border-color: rgba(255, 75, 75, 0.25) !important;
+}
+
+.status-badge.offline .status-dot {
+    background-color: #FF4B4B !important;
+    box-shadow: 0 0 8px #FF4B4B !important;
+}
+
+.status-badge.offline .status-text {
+    color: #FF8585 !important;
+}
+
+
 
 
 
