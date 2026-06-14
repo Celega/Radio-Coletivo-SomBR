@@ -1311,7 +1311,7 @@ body {
     
     .player-card {
         height: auto;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     
     .album-art-panel {
@@ -1321,9 +1321,10 @@ body {
     }
     
     .album-art-panel img {
-        border-top-left-radius: 24px;
-        border-top-right-radius: 24px;
-        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
     }
     
     .controls-panel {
@@ -1357,19 +1358,30 @@ body {
     }
 }
 
-/* Vertical Stack and Responsive Grid for mobile devices */
 @media (max-width: 768px) {
+    .app-container {
+        padding-top: 0 !important;
+        padding-bottom: 24px !important;
+    }
     .sidebar {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 16px !important;
-        padding: 16px !important;
+        display: contents !important;
     }
     .sidebar-top-group {
+        display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        padding: 16px 20px !important;
+        background: rgba(11, 13, 14, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        box-sizing: border-box !important;
+        order: 1 !important;
+    }
+    .main-content {
+        order: 2 !important;
     }
     .logo-slogan-container {
         display: none !important;
@@ -1379,18 +1391,28 @@ body {
         align-self: center !important;
     }
     .sidebar-actions {
-        display: grid !important;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
-        gap: 10px !important;
-        width: 100% !important;
+        display: flex !important;
         flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 16px !important;
+        width: 100% !important;
+        margin-top: 24px !important;
+        margin-bottom: 24px !important;
+        order: 3 !important;
     }
     .sidebar-actions .btn {
-        width: 100% !important;
-        height: 40px !important;
-        border-radius: 20px !important;
-        padding: 0 16px !important;
-        font-size: 12px !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+    }
+    .sidebar-actions .btn-text {
+        display: none !important;
     }
 }
 
