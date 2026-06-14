@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rádio SomBR - Ao Vivo</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Radial background overlay for deep glow effect -->
+    <div class="bg-glow"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top-group">
+                <div class="sidebar-header">
+                    <a href="index.html" class="logo-container" style="text-decoration: none;">
+                        <!-- Official Rádio SomBR WEBP Logo -->
+                        <div class="logo-graphic">
+                            <img src="assets/Logo Coletivo SomBR.webp" alt="Rádio SomBR" class="logo-img">
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-radio">RÁDIO</span>
+                            <span class="logo-sombr">SOM<span class="yellow">B</span><span class="green">R</span></span>
+                        </div>
+                    </a>
+                    <button class="sidebar-toggle-btn" id="btn-sidebar-toggle" title="Recolher Menu">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Brand Slogan -->
+                <div class="logo-slogan-container">
+                    <span class="logo-slogan">MÚSICAS FEITAS<br>POR PESSOAS<br>PARA PESSOAS</span>
+                </div>
+
+                <!-- Status Indicator -->
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Ao Vivo</span>
+                </div>
+            </div>
+
+            <!-- Sidebar Actions -->
+            <div class="sidebar-actions">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD16w2oJ9xc1iMf15BQVsy60ceO5tin4i5n4M7mHYjz_MPaQ/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-lime" id="btn-request" title="Enviar / Sugerir Música">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 16 12 12 8 16"></polyline>
+                        <line x1="12" y1="12" x2="12" y2="21"></line>
+                        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+                    </svg>
+                    <span class="btn-text">ENVIAR MÚSICA</span>
+                </a>
+                <button class="btn btn-outline" id="btn-grid-sidebar" title="Histórico de Músicas">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span class="btn-text">Histórico</span>
+                </button>
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScSPBHhstCIqNEXEwZdSPcCdzrFXYJOU-4daLLykpJqmMFSTg/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="btn-support" title="Suporte / Ajuda">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <span class="btn-text">Suporte</span>
+                </a>
+
+            </div>
+        </aside>
+
+        <!-- Main Content (Player & Footer) -->
+        <main class="main-content">
+            <!-- Central Player Card -->
+            <div class="player-card">
+                <!-- Left Panel: Album Art -->
+                <div class="album-art-panel">
+                    <img id="album-cover" class="paused" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='400' height='400' fill='%2314191B'/></svg>" alt="Album Cover" title="Clique para Play/Pause">
+                    <div class="audio-wave-visualizer" id="visualizer">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <!-- Share Button Overlay -->
+                    <button class="btn-share-overlay" id="btn-share" title="Compartilhar Rádio / Música">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="8.59" y1="10.49" x2="15.41" y2="6.51"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Right Panel: Info and Controls -->
+                <div class="controls-panel">
+                    <!-- Legacy hidden avatar elements to prevent app.js from throwing null errors -->
+                    <div id="artist-avatar" style="display: none !important;">
+                        <span id="artist-initial">-</span>
+                    </div>
+
+                    <!-- Top section: Artist Name & Social Links -->
+                    <div class="artist-header-group">
+                        <span id="song-artist">Por favor, aguarde</span>
+                        <!-- Social Networks & Links Row -->
+                        <div class="social-row">
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-bio" title="Link de Bio">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M13.51 10.03h5.92L12 1.66 4.57 10.03h5.92v3.74H4.57l7.43 8.37 7.43-8.37h-5.92v-3.74z"/>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-spotify" title="Spotify">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-soundcloud" title="SoundCloud">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.747.747 0 0 1 .452-.724s.75-.513 2.333-.513a5.364 5.364 0 0 1 2.763.755 5.433 5.433 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373ZM10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0ZM9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0Zm-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0Zm-1.647.77a26.108 26.108 0 0 1-.008 7.147.272.272 0 0 1-.542 0 27.955 27.955 0 0 1 0-7.147.275.275 0 0 1 .55 0Zm-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0Zm-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0ZM.044 14.936c.264 1.134.183 2.052-.026 3.19a.257.257 0 0 1-.514 0c-.241-1.127-.301-2.062-.023-3.19a.283.283 0 0 1 .563 0Z"/>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-apple-music" title="Apple Music">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.2.67-2.92 1.49-.62.71-1.16 1.85-1.01 2.96 1.12.09 2.27-.58 2.94-1.39z"/>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-youtube" title="YouTube">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-instagram" title="Instagram">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-tiktok" title="TikTok">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.15 1.15 1.16 2.67 1.83 4.27 1.98V10c-1.32-.07-2.61-.57-3.66-1.38C17.59 7.82 16.9 6.8 16.5 5.66v9.17a6.22 6.22 0 0 1-2.48 4.93 6.13 6.13 0 0 1-7.85-.36 6.22 6.22 0 0 1-1.99-5.18 6.14 6.14 0 0 1 3.96-5.59c.28-.1.58-.16.88-.2v4.06a2.21 2.21 0 0 0-1.74 2.11 2.15 2.15 0 0 0 2.2 2.12 2.2 2.2 0 0 0 2.2-2.1v-14.6h3.84v-.01Z"/>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" class="social-icon-btn hidden" id="link-facebook" title="Facebook">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Middle section: Song Title & Letras -->
+                    <div class="song-title-group">
+                        <div class="song-title-wrapper">
+                            <h1 id="song-title">Carregando...</h1>
+                        </div>
+                        
+                        <!-- Letras Trigger Button -->
+                        <div class="lyrics-trigger-wrap">
+                            <button class="btn-figma-lyrics" id="btn-lyrics" title="Visualizar Letra">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                </svg>
+                                <span>LETRA</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- Volume Centered Row -->
+                    <div class="volume-row-centered">
+                        <button class="volume-btn" id="btn-volume-toggle" title="Mutar/Desmutar">
+                            <svg id="volume-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            </svg>
+                            <svg id="volume-mute-icon" class="hidden" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <line x1="23" y1="9" x2="17" y2="15"></line>
+                                <line x1="17" y1="9" x2="23" y2="15"></line>
+                            </svg>
+                        </button>
+                        <div class="volume-slider-container">
+                            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.8" class="volume-slider" title="Volume">
+                        </div>
+                        
+                        <!-- Quality Selector Pill -->
+                        <div class="quality-selector-container">
+                            <button class="quality-btn" id="btn-quality-toggle" title="Alterar Qualidade de Áudio">MQ</button>
+                            <div class="quality-dropdown" id="quality-dropdown">
+                                <button class="quality-option" data-quality="hd">✨ Alta Qualidade (HD)</button>
+                                <button class="quality-option active" data-quality="mq">📻 Qualidade Padrão (MQ)</button>
+                                <button class="quality-option" data-quality="lq">📱 Economia de Dados (LQ)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Progress Area -->
+                    <div class="progress-row">
+                        <span id="time-elapsed">00:00</span>
+                        <div class="progress-bar-wrap" id="progress-wrapper">
+                            <div class="progress-bar" id="progress-fill"></div>
+                            <div class="progress-thumb" id="progress-thumb"></div>
+                        </div>
+                        <span id="time-total">00:00</span>
+                    </div>
+
+                    <!-- Large Centered Play Button -->
+                    <div class="play-control-centered">
+                        <button class="play-btn-large" id="btn-main-play" title="Play/Pause">
+                            <svg id="play-icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            <svg id="pause-icon" class="hidden" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <rect x="6" y="4" width="4" height="16"></rect>
+                                <rect x="14" y="4" width="4" height="16"></rect>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer: Navigation & Dynamic Cards -->
+            <footer class="footer-dock-container">
+                <div class="footer-dock">
+                    <!-- Previous Song Card (Anterior) -->
+                    <div class="dock-card" id="card-prev" title="Música Anterior">
+                        <div class="dock-card-indicator">
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            <span>ANTERIOR</span>
+                        </div>
+                        <div class="dock-card-body">
+                            <img id="prev-art" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='40' height='40' fill='%231E262A'/></svg>" alt="Anterior Arte">
+                            <div class="dock-card-info">
+                                <h4 id="prev-title">Nenhuma música</h4>
+                                <p id="prev-artist">Anteriormente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dock-divider"></div>
+
+                    <!-- Next Song Card (Próxima) -->
+                    <div class="dock-card" id="card-next" title="Próxima Música">
+                        <div class="dock-card-indicator justify-end">
+                            <span>PRÓXIMA</span>
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="dock-card-body">
+                            <div class="dock-card-info align-right">
+                                <h4 id="next-title">Nenhuma música</h4>
+                                <p id="next-artist">A seguir</p>
+                            </div>
+                            <img id="next-art" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='40' height='40' fill='%231E262A'/></svg>" alt="Próxima Arte">
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Slide-out Drawer for Lyrics -->
+    <div class="lyrics-drawer" id="lyrics-drawer">
+        <div class="drawer-header">
+            <h2>Letras da Música</h2>
+            <button class="close-btn" id="btn-close-lyrics" title="Fechar Letras">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <pre id="lyrics-text">Carregando letras...</pre>
+        </div>
+    </div>
+
+
+
+    <!-- Music History Modal -->
+    <div class="modal" id="schedule-modal">
+        <div class="modal-content" style="max-width: 480px;">
+            <div class="modal-header">
+                <h2 style="color: var(--color-text-main); font-weight: 700; text-transform: none; font-size: 18px; letter-spacing: 0;">Histórico de Músicas</h2>
+                <button class="close-btn" id="close-schedule-modal" title="Fechar Histórico">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px 25px 20px;">
+                <div class="history-list" id="history-list">
+                    <p style="color: var(--color-text-muted); text-align: center; font-size: 13px; padding: 20px 0;">Carregando histórico...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden audio element for streaming -->
+    <audio id="radio-stream" preload="none">
+        <source src="https://airadio.duckdns.org/listen/radio_sombr/radio" type="audio/aac">
+    </audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
