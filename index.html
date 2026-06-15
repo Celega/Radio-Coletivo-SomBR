@@ -52,14 +52,43 @@
 
             <!-- Sidebar Actions -->
             <div class="sidebar-actions">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD16w2oJ9xc1iMf15BQVsy60ceO5tin4i5n4M7mHYjz_MPaQ/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-lime" id="btn-request" title="Enviar / Sugerir Música">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="16 16 12 12 8 16"></polyline>
-                        <line x1="12" y1="12" x2="12" y2="21"></line>
-                        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
-                    </svg>
-                    <span class="btn-text">ENVIAR MÚSICA</span>
-                </a>
+                <div class="artist-tools-container" id="artist-tools-wrap">
+                    <button class="btn btn-lime btn-tools-toggle" id="btn-tools-toggle" title="Ferramentas para Artista">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        <span class="btn-text">FERRAMENTAS ARTISTA</span>
+                        <svg class="chevron-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="tools-dropdown-menu" id="tools-dropdown-menu">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD16w2oJ9xc1iMf15BQVsy60ceO5tin4i5n4M7mHYjz_MPaQ/viewform" target="_blank" rel="noopener noreferrer" class="tools-dropdown-item">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <span>Enviar Música</span>
+                        </a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScSPBHhstCIqNEXEwZdSPcCdzrFXYJOU-4daLLykpJqmMFSTg/viewform" target="_blank" rel="noopener noreferrer" class="tools-dropdown-item">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
+                            <span>Solicitar Remoção de Música</span>
+                        </a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYuqCr61nV0VobZuWf7H0wy-Oh-VHkn8iPfxDbngs4XXaOMA/viewform" target="_blank" rel="noopener noreferrer" class="tools-dropdown-item">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                            <span>Atualizar Redes Sociais</span>
+                        </a>
+                    </div>
+                </div>
                 <button class="btn btn-outline" id="btn-grid-sidebar" title="Histórico de Músicas">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -76,14 +105,6 @@
                     <span class="btn-text">Mini Player</span>
                 </button>
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScSPBHhstCIqNEXEwZdSPcCdzrFXYJOU-4daLLykpJqmMFSTg/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="btn-support" title="Suporte / Ajuda">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
-                    <span class="btn-text">Suporte</span>
-                </a>
 
             </div>
         </aside>

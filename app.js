@@ -68,7 +68,6 @@ const sidebar = document.getElementById('sidebar');
 const btnSidebarToggle = document.getElementById('btn-sidebar-toggle');
 
 // Modals elements
-const btnSupport = document.getElementById('btn-support');
 const btnGridSidebar = document.getElementById('btn-grid-sidebar');
 
 const scheduleModal = document.getElementById('schedule-modal');
@@ -122,6 +121,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setupModalEvents();
     setupShareButton();
     setupMiniPlayerEvents();
+    setupArtistTools();
 });
 
 function setupSidebarEvents() {
@@ -270,6 +270,33 @@ function setupMiniPlayerEvents() {
             window.location.href = `${window.location.origin}${window.location.pathname}`;
         });
     }
+}
+
+function setupArtistTools() {
+    const wrap = document.getElementById('artist-tools-wrap');
+    const toggle = document.getElementById('btn-tools-toggle');
+    const dropdownItems = document.querySelectorAll('.tools-dropdown-item');
+
+    if (!wrap || !toggle) return;
+
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        wrap.classList.toggle('open');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (wrap.classList.contains('open') && !wrap.contains(e.target)) {
+            wrap.classList.remove('open');
+        }
+    });
+
+    // Close when clicking any option
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+            wrap.classList.remove('open');
+        });
+    });
 }
 
 

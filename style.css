@@ -1774,7 +1774,7 @@ body.mini-mode .app-container {
     max-width: 100% !important;
     max-height: 100% !important;
     min-height: unset !important;
-    padding: 12px !important;
+    padding: 10px !important;
     gap: 0 !important;
     justify-content: center !important;
     align-items: center !important;
@@ -1785,23 +1785,27 @@ body.mini-mode .player-card {
     height: 100% !important;
     width: 100% !important;
     border-radius: 16px !important;
-    padding: 16px !important;
-    flex-direction: row-reverse !important; /* controls left, image right */
-    gap: 16px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-    background: var(--bg-card-solid) !important;
+    padding: 20px !important;
+    flex-direction: row !important; /* Album art left, controls right */
+    gap: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    background: var(--bg-card) !important; /* Premium dark background */
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     display: flex !important;
-    align-items: stretch !important;
+    align-items: center !important;
 }
 
 body.mini-mode .album-art-panel {
-    width: 120px !important;
-    height: 120px !important;
+    width: 180px !important;
+    height: 180px !important;
     border-radius: 12px !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
     aspect-ratio: 1 / 1 !important;
     align-self: center !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
 }
 
 body.mini-mode .album-art-panel img {
@@ -1827,15 +1831,27 @@ body.mini-mode .controls-panel {
         "play volume"
         "exit exit" !important;
     align-content: space-between !important;
+    background: transparent !important; /* Removes split background */
+    height: 100% !important;
 }
 
 body.mini-mode .artist-header-group {
     grid-area: artist !important;
     margin: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
 }
 
 body.mini-mode #song-artist {
-    font-size: 13px !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    text-shadow: none !important;
+    text-align: left !important;
+}
+
+body.mini-mode .social-row {
+    display: none !important;
 }
 
 body.mini-mode .song-title-group {
@@ -1843,19 +1859,32 @@ body.mini-mode .song-title-group {
     flex-direction: column !important;
     align-items: flex-start !important;
     margin: 0 !important;
+    text-align: left !important;
+}
+
+body.mini-mode .song-title-wrapper {
+    min-height: unset !important;
+    height: auto !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
 }
 
 body.mini-mode .song-title-group h1 {
     font-size: 18px !important;
     font-weight: 700 !important;
     line-height: 1.2 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
 }
 
 body.mini-mode .progress-row {
     grid-area: progress !important;
-    margin: 0 !important;
+    margin: 4px 0 !important;
     gap: 8px !important;
-    font-size: 11px !important;
+    font-size: 10px !important;
 }
 
 body.mini-mode .play-control-centered {
@@ -1867,14 +1896,14 @@ body.mini-mode .play-control-centered {
 }
 
 body.mini-mode .play-btn-large {
-    width: 40px !important;
-    height: 40px !important;
+    width: 44px !important;
+    height: 44px !important;
     box-shadow: none !important;
 }
 
 body.mini-mode .play-btn-large svg {
-    width: 16px !important;
-    height: 16px !important;
+    width: 18px !important;
+    height: 18px !important;
 }
 
 body.mini-mode .volume-row-centered {
@@ -1889,7 +1918,7 @@ body.mini-mode .volume-row-centered {
 }
 
 body.mini-mode .volume-row-centered .volume-slider-container {
-    width: 80px !important;
+    width: 70px !important;
 }
 
 body.mini-mode .volume-btn {
@@ -1898,8 +1927,8 @@ body.mini-mode .volume-btn {
 }
 
 body.mini-mode .volume-btn svg {
-    width: 16px !important;
-    height: 16px !important;
+    width: 14px !important;
+    height: 14px !important;
 }
 
 body.mini-mode .quality-selector-container {
@@ -1909,16 +1938,249 @@ body.mini-mode .quality-selector-container {
 body.mini-mode #btn-exit-mini {
     grid-area: exit !important;
     width: 100% !important;
-    height: 34px !important;
-    border-radius: 17px !important;
-    font-size: 10px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    font-size: 9px !important;
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     margin-top: 4px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--color-text-muted) !important;
+    transition: all var(--transition-fast) !important;
 }
+
+body.mini-mode #btn-exit-mini:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: var(--color-text-main) !important;
+}
+
+/* ==========================================================================
+   Artist Tools Dropdown (Ferramentas para Artista)
+   ========================================================================== */
+.artist-tools-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-tools-toggle {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    width: 100% !important;
+}
+
+.btn-tools-toggle .chevron-icon {
+    margin-left: auto;
+    transition: transform var(--transition-fast);
+}
+
+.artist-tools-container.open .btn-tools-toggle .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.tools-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 0;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.artist-tools-container.open .tools-dropdown-menu {
+    max-height: 180px; /* Expands accordion */
+    margin-top: 10px;
+    opacity: 1;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.tools-dropdown-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-text-muted);
+    padding: 10px 12px; /* Slightly reduced horizontal padding to fit text on one line */
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content */
+    gap: 8px; /* Space between icon and text */
+    transition: all var(--transition-fast);
+}
+
+.tools-dropdown-item:hover {
+    color: var(--color-lime);
+    border-color: rgba(158, 240, 55, 0.3);
+    background: rgba(158, 240, 55, 0.04);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Mobile Adaptations for Artist Tools
+   ========================================================================== */
+@media (max-width: 768px) {
+    .artist-tools-container {
+        width: 44px !important;
+        height: 44px !important;
+        position: relative !important;
+        display: inline-flex !important;
+    }
+
+    .btn-tools-toggle {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .btn-tools-toggle .btn-text,
+    .btn-tools-toggle .chevron-icon {
+        display: none !important;
+    }
+
+    .tools-dropdown-menu {
+        position: absolute !important;
+        bottom: calc(100% + 12px) !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        width: 220px !important;
+        background: rgba(18, 22, 25, 0.98) !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 16px !important;
+        padding: 8px !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transition: opacity var(--transition-fast), transform var(--transition-fast) !important;
+        max-height: unset !important;
+        margin-top: 0 !important;
+        z-index: 1000 !important;
+        gap: 4px !important;
+    }
+
+    .artist-tools-container.open .tools-dropdown-menu {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateX(-50%) translateY(0) !important;
+    }
+
+    .tools-dropdown-item {
+        padding: 10px 16px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        background: transparent !important;
+        border: none !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .tools-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        color: #FFFFFF !important;
+        transform: none !important;
+    }
+}
+
+/* ==========================================================================
+   Desktop Collapsed Sidebar Overrides for Artist Tools
+   ========================================================================== */
+@media (min-width: 769px) {
+    .sidebar.collapsed .artist-tools-container {
+        align-items: center;
+    }
+
+    .sidebar.collapsed .btn-tools-toggle {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        justify-content: center !important;
+    }
+
+    .sidebar.collapsed .btn-tools-toggle .chevron-icon {
+        display: none !important;
+    }
+
+    .sidebar.collapsed .tools-dropdown-menu {
+        position: absolute !important;
+        left: calc(100% + 16px) !important;
+        top: 0 !important;
+        width: max-content !important; /* Fits width dynamically */
+        min-width: 250px !important; /* Ensures a clean minimum width */
+        background: rgba(18, 22, 25, 0.98) !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 16px !important;
+        padding: 8px !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transition: opacity var(--transition-fast), transform var(--transition-fast) !important;
+        transform: translateX(10px) !important;
+        max-height: unset !important;
+        margin-top: 0 !important;
+        z-index: 1000 !important;
+        gap: 4px !important;
+    }
+
+    .sidebar.collapsed .artist-tools-container.open .tools-dropdown-menu {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateX(0) !important;
+    }
+
+    .sidebar.collapsed .tools-dropdown-item {
+        background: transparent !important;
+        border: none !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+        padding: 10px 16px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important; /* Align content to the left */
+        gap: 12px !important; /* Space between icon and text */
+        text-align: left !important; /* Align text to the left */
+        width: 100% !important;
+        box-sizing: border-box !important;
+        white-space: nowrap !important; /* Keep each option on a single line */
+        transition: all var(--transition-fast) !important;
+    }
+
+    .sidebar.collapsed .tools-dropdown-item:hover {
+        color: var(--color-lime) !important;
+        background: rgba(158, 240, 55, 0.08) !important;
+        border: none !important;
+        transform: none !important;
+    }
+}
+
+
 
 
 
