@@ -97,6 +97,14 @@ window.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.add('collapsed');
     }
 
+    // Check for mini player mode
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mini') === 'true') {
+        document.body.classList.add('mini-mode');
+        const btnExitMini = document.getElementById('btn-exit-mini');
+        if (btnExitMini) btnExitMini.classList.remove('hidden');
+    }
+
     fetchMetadata();
     // Poll API every 10 seconds
     setInterval(fetchMetadata, 10000);
@@ -113,6 +121,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setupSidebarEvents();
     setupModalEvents();
     setupShareButton();
+    setupMiniPlayerEvents();
 });
 
 function setupSidebarEvents() {
@@ -234,6 +243,33 @@ function showToast(message) {
     }, 3000);
     
     toast.dataset.timeoutId = timeoutId;
+}
+
+function setupMiniPlayerEvents() {
+    const btnMiniPlayer = document.getElementById('btn-mini-player');
+    if (btnMiniPlayer) {
+        btnMiniPlayer.addEventListener('click', () => {
+            const width = 480;
+            const height = 300;
+            const left = (screen.width / 2) - (width / 2);
+            const top = (screen.height / 2) - (height / 2);
+            
+            const popupUrl = `${window.location.origin}${window.location.pathname}?mini=true`;
+            
+            window.open(
+                popupUrl, 
+                'RadioSomBRMini', 
+                `width=${width},height=${height},left=${left},top=${top},menubar=no,toolbar=no,location=no,status=no,resizable=no`
+            );
+        });
+    }
+
+    const btnExitMini = document.getElementById('btn-exit-mini');
+    if (btnExitMini) {
+        btnExitMini.addEventListener('click', () => {
+            window.location.href = `${window.location.origin}${window.location.pathname}`;
+        });
+    }
 }
 
 
