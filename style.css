@@ -1405,6 +1405,23 @@ body {
         width: auto !important;
     }
 
+    .logo-graphic {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .logo-radio {
+        font-size: 16px !important;
+    }
+
+    .logo-sombr {
+        font-size: 16px !important;
+    }
+
+    .logo-container {
+        gap: 8px !important;
+    }
+
     .main-content {
         order: 2 !important;
         flex: 1 !important;
@@ -1425,7 +1442,7 @@ body {
         border: none !important;
         box-shadow: none !important;
         background: transparent !important;
-        padding: 16px !important;
+        padding: 10px 16px !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
@@ -1435,20 +1452,20 @@ body {
     }
 
     .album-art-panel {
-        width: 28vh !important;
-        height: 28vh !important;
-        max-width: 65vw !important;
-        max-height: 65vw !important;
+        width: 22vh !important;
+        height: 22vh !important;
+        max-width: 50vw !important;
+        max-height: 50vw !important;
         aspect-ratio: 1 / 1 !important;
-        border-radius: 20px !important;
+        border-radius: 16px !important;
         margin: 0 auto !important;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
         align-self: center !important;
         flex-shrink: 1 !important;
     }
 
     .album-art-panel img {
-        border-radius: 20px !important;
+        border-radius: 16px !important;
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
@@ -1521,6 +1538,16 @@ body {
         margin: 0 !important;
     }
 
+    .play-btn-large {
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    .play-btn-large svg {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
     .logo-slogan-container {
         display: none !important;
     }
@@ -1565,6 +1592,55 @@ body {
 
     .footer-dock-container {
         display: none !important;
+    }
+
+    /* Otimização específica para telas com baixa altura (como iPhone SE ou com teclado aberto) */
+    @media (max-height: 700px) {
+        .sidebar-top-group {
+            height: 50px !important;
+        }
+        
+        .sidebar-actions {
+            height: 54px !important;
+            padding: 8px 16px !important;
+        }
+        
+        .sidebar-actions .btn {
+            width: 38px !important;
+            height: 38px !important;
+        }
+        
+        .main-content {
+            height: calc(100vh - 104px) !important;
+        }
+        
+        .album-art-panel {
+            width: 18vh !important;
+            height: 18vh !important;
+        }
+        
+        .controls-panel {
+            margin-top: 6px !important;
+            gap: 2px !important;
+        }
+        
+        .song-title-group h1 {
+            font-size: 16px !important;
+        }
+        
+        .play-btn-large {
+            width: 44px !important;
+            height: 44px !important;
+        }
+        
+        .play-btn-large svg {
+            width: 18px !important;
+            height: 18px !important;
+        }
+        
+        .volume-row-centered {
+            gap: 6px !important;
+        }
     }
 }
 
