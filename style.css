@@ -1311,20 +1311,22 @@ body {
     
     .player-card {
         height: auto;
-        flex-direction: column-reverse;
+        flex-direction: column; /* Album cover on top, controls on bottom (native UX) */
     }
     
     .album-art-panel {
         width: 100%;
+        max-width: 280px; /* Limits size on tablet/larger mobile */
+        max-height: 32vh; /* Restricts cover art height to prevent vertical scrolling */
         height: auto;
         aspect-ratio: 1 / 1;
+        border-radius: 16px !important;
+        margin: 24px auto 0 auto !important; /* Center and float the cover */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
     
     .album-art-panel img {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 24px;
-        border-bottom-right-radius: 24px;
+        border-radius: 16px !important;
     }
     
     .controls-panel {
@@ -1416,38 +1418,49 @@ body {
     }
 }
 
-/* Stacking and aligning footer dock on mobile screens */
+/* Symmetrical and compact horizontal footer dock on mobile screens */
 @media (max-width: 576px) {
     .footer-dock {
-        flex-direction: column;
-        height: auto;
-        padding: 12px;
-        gap: 10px;
+        flex-direction: row !important;
+        height: 60px !important;
+        padding: 8px 12px !important;
+        gap: 12px !important;
+        align-items: center !important;
         width: 100%;
     }
     
     .dock-divider {
-        width: 100%;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.08);
+        width: 1px !important;
+        height: 24px !important;
+        background: rgba(255, 255, 255, 0.08) !important;
     }
     
     .dock-card {
-        width: 100%;
-        padding: 4px 0;
+        flex: 1 !important;
+        padding: 0 !important;
+        height: 100% !important;
+    }
+    
+    .dock-card img {
+        display: none !important; /* Hide cover images on small screens to save space */
+    }
+    
+    .dock-card-indicator {
+        font-size: 8px !important;
+        margin-bottom: 2px !important;
     }
     
     .dock-card-indicator.justify-end {
-        justify-content: flex-start;
+        justify-content: flex-end !important; /* Keep next indicator aligned right */
     }
     
     .dock-card-info.align-right {
-        text-align: left !important;
+        text-align: right !important; /* Symmetrical text layout */
     }
     
     #card-next .dock-card-body {
-        flex-direction: row-reverse;
-        justify-content: flex-end;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
     }
 }
 
