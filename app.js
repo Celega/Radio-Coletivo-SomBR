@@ -320,8 +320,11 @@ function setupAudioEvents() {
     });
 
     audio.addEventListener('error', (e) => {
-        // Only log once per error burst — the <source> element can fire multiple
-        // error events in rapid succession when the stream is unreachable.
+        // If the error occurred because the user paused the playback, ignore it.
+        if (audio._userPaused) {
+            return;
+        }
+        // Only log once per error burst
         if (audio._errorHandled) return;
         audio._errorHandled = true;
         console.warn("Audio playback error:", e);
@@ -334,13 +337,12 @@ function setupAudioEvents() {
 
 function toggleAudio() {
     if (isAudioPlaying) {
-        // Pausing stops stream download completely to save user bandwidth
+        audio._userPaused = true;
         audio.pause();
-        audio._errorHandled = true; // Suppress error from src clearing
-        audio.removeAttribute('src');
+        audio.removeAttribute('src'); // Stop network download completely
         audio.load();
-        setTimeout(() => { audio._errorHandled = false; }, 500);
     } else {
+        audio._userPaused = false;
         // Playing forces src reload to get live audio instantly with no lag buffer
         audio.src = STREAM_URL;
         audio.load();
@@ -920,6 +922,7 @@ function setupQualitySelector() {
             // If audio is playing, switch stream dynamically without stopping the experience
             if (isAudioPlaying) {
                 const wasPlaying = isAudioPlaying;
+                audio._userPaused = false;
                 audio.pause();
                 audio.src = STREAM_URL;
                 audio.load();
