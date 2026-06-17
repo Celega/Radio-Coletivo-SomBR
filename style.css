@@ -51,6 +51,7 @@ body {
     position: absolute;
     width: 600px;
     height: 600px;
+    max-width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -203,21 +204,6 @@ body {
     text-transform: uppercase;
 }
 
-/* Custom Artistas Button style to match Figma */
-#btn-artists-sidebar {
-    background-color: rgba(20, 26, 30, 0.4);
-    color: var(--color-lime) !important;
-    border: 1px solid var(--color-lime) !important;
-    box-shadow: 0 4px 15px rgba(158, 240, 55, 0.05);
-}
-
-#btn-artists-sidebar:hover {
-    background-color: rgba(158, 240, 55, 0.05) !important;
-    border-color: #b0fb44 !important;
-    color: #b0fb44 !important;
-    box-shadow: 0 6px 20px var(--color-lime-glow);
-    transform: translateY(-2px);
-}
 
 
 /* Live Status Badge */
@@ -516,14 +502,6 @@ body {
     text-align: center;
 }
 
-#song-artist {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--color-cyan);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    text-shadow: 0 0 12px rgba(63, 224, 242, 0.2);
-}
 
 .song-title-group {
     display: flex;
@@ -686,26 +664,6 @@ body {
     opacity: 1;
 }
 
-/* Play Control Button & Volume Slider */
-.play-controls-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.volume-spacer {
-    width: 140px; /* balances the volume controls on the right */
-}
-
-.volume-control-wrap {
-    width: 140px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: flex-end;
-}
 
 .volume-btn {
     background: transparent;
@@ -784,33 +742,6 @@ body {
     justify-content: center;
 }
 
-.play-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: var(--color-cyan);
-    color: #0B0D0E;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 15px var(--color-cyan-glow);
-    transition: var(--transition-normal);
-}
-
-.play-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 22px rgba(63, 224, 242, 0.6);
-}
-
-.play-btn:active {
-    transform: scale(0.95);
-}
-
-.play-btn.playing {
-    animation: buttonPulse 2s infinite;
-}
 
 @keyframes buttonPulse {
     0% { box-shadow: 0 0 0 0 rgba(63, 224, 242, 0.7); }
@@ -1084,7 +1015,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
@@ -1138,70 +1069,7 @@ body {
     padding: 20px;
 }
 
-/* Forms layout */
-.form-group {
-    margin-bottom: 15px;
-}
 
-.form-group label {
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px 14px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    color: var(--color-text-main);
-    font-family: var(--font-stack);
-    font-size: 13px;
-    transition: var(--transition-fast);
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--color-cyan);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-/* Schedule List styling */
-.schedule-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.schedule-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 8px;
-    font-size: 13px;
-}
-
-.schedule-item.active {
-    background: rgba(63, 224, 242, 0.05);
-    border-color: rgba(63, 224, 242, 0.15);
-}
-
-.schedule-time {
-    color: var(--color-cyan);
-    font-weight: 700;
-}
-
-.schedule-title {
-    color: var(--color-text-main);
-    font-weight: 600;
-}
 
 /* ==========================================================================
    Responsive Adaptations
@@ -2462,11 +2330,4 @@ body.mini-mode #btn-exit-mini:hover {
         transform: none !important;
     }
 }
-
-
-
-
-
-
-
 

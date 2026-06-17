@@ -21,6 +21,11 @@ const server = http.createServer((req, res) => {
     '.gif': 'image/gif',
     '.svg': 'image/svg+xml',
     '.json': 'application/json',
+    '.webp': 'image/webp',
+    '.ico': 'image/x-icon',
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+    '.aac': 'audio/aac',
   };
 
   const contentType = mimeTypes[extname] || 'application/octet-stream';

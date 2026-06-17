@@ -12,7 +12,7 @@ let progressInterval = null;
 let isAudioPlaying = false;
 
 // Custom Artist Avatar Mapping Catalog (for Suno, Spotify, personal sites, etc.)
-// As chaves devem ser em letras minÃºsculas e sem caracteres especiais (ex: "celega" para "â–‘câ–‘eâ–‘lâ–‘eâ–‘gâ–‘aâ–‘")
+// As chaves devem ser em letras minúsculas e sem caracteres especiais (ex: "celega")
 const ARTIST_AVATARS = {
     "sunocreator": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=120&h=120&fit=crop",
     "coletivosombr": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=120&h=120&fit=crop",
