@@ -320,14 +320,15 @@ function setupAudioEvents() {
     });
 
     audio.addEventListener('error', (e) => {
-        // Guard: ignore errors from empty src (caused by pause/stop cleanup)
-        if (!audio.src || audio.src === window.location.href) return;
-        console.error("Audio playback error:", e);
+        // Only log once per error burst — the <source> element can fire multiple
+        // error events in rapid succession when the stream is unreachable.
+        if (audio._errorHandled) return;
+        audio._errorHandled = true;
+        console.warn("Audio playback error:", e);
         isAudioPlaying = false;
         updatePlayStateUI(false);
-        // Clear src without triggering another error event
-        audio.removeAttribute('src');
-        audio.load();
+        // Reset flag after a short delay so future genuine errors are caught
+        setTimeout(() => { audio._errorHandled = false; }, 1000);
     });
 }
 
@@ -335,7 +336,10 @@ function toggleAudio() {
     if (isAudioPlaying) {
         // Pausing stops stream download completely to save user bandwidth
         audio.pause();
-        audio.src = '';
+        audio._errorHandled = true; // Suppress error from src clearing
+        audio.removeAttribute('src');
+        audio.load();
+        setTimeout(() => { audio._errorHandled = false; }, 500);
     } else {
         // Playing forces src reload to get live audio instantly with no lag buffer
         audio.src = STREAM_URL;
