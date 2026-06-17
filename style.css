@@ -31,12 +31,15 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     background-color: var(--bg-dark);
     color: var(--color-text-main);
     font-family: var(--font-stack);
     min-height: 100vh;
-    overflow-x: hidden;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1358,26 +1361,33 @@ body {
         max-width: 680px;
     }
 }
-
 @media (max-width: 768px) {
+    html,
     body {
         overflow: hidden !important;
-        height: 100vh !important;
-        width: 100vw !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .app-container {
         padding: 0 !important;
         margin: 0 !important;
-        height: 100vh !important;
-        width: 100vw !important;
-        max-width: 100vw !important;
-        max-height: 100vh !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        max-height: 100dvh !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
         gap: 0 !important;
         overflow: hidden !important;
+        min-width: 0 !important;
     }
 
     .sidebar {
@@ -1390,6 +1400,7 @@ body {
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
+        max-width: 100% !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
         padding: 10px 16px !important;
         background: rgba(11, 13, 14, 0.95) !important;
@@ -1398,11 +1409,13 @@ body {
         box-sizing: border-box !important;
         order: 1 !important;
         height: 60px !important;
+        min-width: 0 !important;
     }
 
     .sidebar-header,
     .logo-container {
         width: auto !important;
+        min-width: 0 !important;
     }
 
     .logo-graphic {
@@ -1430,9 +1443,12 @@ body {
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
-        height: calc(100vh - 124px) !important;
+        height: calc(100% - 124px) !important;
+        height: calc(100dvh - 124px) !important;
         overflow: hidden !important;
         background: transparent !important;
+        min-height: 0 !important; /* Allow flexbox shrinking */
+        min-width: 0 !important;
     }
 
     .player-card {
@@ -1449,6 +1465,8 @@ body {
         align-items: center !important;
         overflow: hidden !important;
         box-sizing: border-box !important;
+        min-height: 0 !important; /* Allow flexbox shrinking */
+        min-width: 0 !important;
     }
 
     .album-art-panel {
@@ -1473,7 +1491,7 @@ body {
 
     .controls-panel {
         width: 100% !important;
-        padding: 0 !important;
+        padding: 0 20px !important; /* Premium horizontal padding */
         background: transparent !important;
         display: flex !important;
         flex-direction: column !important;
@@ -1483,6 +1501,7 @@ body {
         flex: 1 !important;
         margin-top: 12px !important;
         min-height: 0 !important;
+        min-width: 0 !important;
         box-sizing: border-box !important;
     }
 
@@ -1490,11 +1509,17 @@ body {
         align-items: center !important;
         text-align: center !important;
         margin-bottom: 2px !important;
+        width: 100% !important;
+        min-width: 0 !important;
     }
 
     #song-artist {
         text-align: center !important;
         font-size: 13px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        width: 100% !important;
     }
 
     .song-title-group {
@@ -1502,6 +1527,7 @@ body {
         text-align: center !important;
         width: 100% !important;
         margin-bottom: 4px !important;
+        min-width: 0 !important;
     }
 
     .song-title-group h1 {
@@ -1518,6 +1544,8 @@ body {
         min-height: unset !important;
         height: auto !important;
         justify-content: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
     }
 
     .volume-row-centered {
@@ -1527,15 +1555,22 @@ body {
         gap: 10px !important;
         width: 100% !important;
         margin: 0 !important;
+        min-width: 0 !important;
     }
 
     .progress-row {
         width: 100% !important;
         margin: 0 !important;
+        min-width: 0 !important;
+    }
+
+    .progress-bar-wrap {
+        min-width: 0 !important;
     }
 
     .play-control-centered {
         margin: 0 !important;
+        min-width: 0 !important;
     }
 
     .play-btn-large {
@@ -1555,6 +1590,13 @@ body {
     .status-badge {
         margin-top: 0 !important;
         align-self: center !important;
+        padding: 3px 8px !important;
+        gap: 4px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .status-text {
+        font-size: 8.5px !important;
     }
 
     .sidebar-actions {
@@ -1573,6 +1615,7 @@ body {
         margin: 0 !important;
         order: 3 !important;
         height: 64px !important;
+        min-width: 0 !important;
     }
 
     .sidebar-actions .btn {
@@ -1593,54 +1636,55 @@ body {
     .footer-dock-container {
         display: none !important;
     }
+}
 
-    /* Otimização específica para telas com baixa altura (como iPhone SE ou com teclado aberto) */
-    @media (max-height: 700px) {
-        .sidebar-top-group {
-            height: 50px !important;
-        }
-        
-        .sidebar-actions {
-            height: 54px !important;
-            padding: 8px 16px !important;
-        }
-        
-        .sidebar-actions .btn {
-            width: 38px !important;
-            height: 38px !important;
-        }
-        
-        .main-content {
-            height: calc(100vh - 104px) !important;
-        }
-        
-        .album-art-panel {
-            width: 18vh !important;
-            height: 18vh !important;
-        }
-        
-        .controls-panel {
-            margin-top: 6px !important;
-            gap: 2px !important;
-        }
-        
-        .song-title-group h1 {
-            font-size: 16px !important;
-        }
-        
-        .play-btn-large {
-            width: 44px !important;
-            height: 44px !important;
-        }
-        
-        .play-btn-large svg {
-            width: 18px !important;
-            height: 18px !important;
-        }
-        
-        .volume-row-centered {
-            gap: 6px !important;
-        }
+/* Otimização específica para telas com baixa altura (como iPhone SE ou com teclado aberto) */
+@media (max-width: 768px) and (max-height: 700px) {
+    .sidebar-top-group {
+        height: 50px !important;
+    }
+    
+    .sidebar-actions {
+        height: 54px !important;
+        padding: 8px 16px !important;
+    }
+    
+    .sidebar-actions .btn {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    
+    .main-content {
+        height: calc(100% - 104px) !important;
+        height: calc(100dvh - 104px) !important;
+    }
+    
+    .album-art-panel {
+        width: 16vh !important;
+        height: 16vh !important;
+    }
+    
+    .controls-panel {
+        margin-top: 6px !important;
+        gap: 2px !important;
+    }
+    
+    .song-title-group h1 {
+        font-size: 16px !important;
+    }
+    
+    .play-btn-large {
+        width: 44px !important;
+        height: 44px !important;
+    }
+    
+    .play-btn-large svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+    
+    .volume-row-centered {
+        gap: 6px !important;
     }
 }
 
@@ -1693,7 +1737,7 @@ body {
 /* Prevent social icons overflow on very small devices */
 @media (max-width: 480px) {
     .controls-panel {
-        padding: 0 !important;
+        padding: 0 16px !important; /* Indents controls nicely from card edges! */
     }
     .song-title-group h1 {
         font-size: 18px !important;
