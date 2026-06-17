@@ -320,11 +320,14 @@ function setupAudioEvents() {
     });
 
     audio.addEventListener('error', (e) => {
+        // Guard: ignore errors from empty src (caused by pause/stop cleanup)
+        if (!audio.src || audio.src === window.location.href) return;
         console.error("Audio playback error:", e);
         isAudioPlaying = false;
         updatePlayStateUI(false);
-        // Attempt recovery
-        audio.src = '';
+        // Clear src without triggering another error event
+        audio.removeAttribute('src');
+        audio.load();
     });
 }
 
